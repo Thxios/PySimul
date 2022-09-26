@@ -7,5 +7,5 @@
 
 ### Run
 ```shell
->python main.py [Simulation Type]
+>python simulation.py [Simulation Type]
 ```
