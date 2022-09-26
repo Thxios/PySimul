@@ -1,5 +1,3 @@
-import os
-os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 
 from simulation.pendulum.simulator import PendulumSimulator
 from app import Window

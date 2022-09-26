@@ -58,6 +58,8 @@ class PendulumSimulator(Simulator):
         self.y2 = self.y1 + self.L2 * cos(self.t2)
 
     def draw(self, screen):
+        screen.fill(PendulumConfig.BG_COLOR)
+
         scr_pos1 = self.coord2scr(self.x1, self.y1)
         scr_pos2 = self.coord2scr(self.x2, self.y2)
 

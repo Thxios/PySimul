@@ -32,6 +32,8 @@ class Window:
 
         self.screen = pg.display.set_mode((config.WIDTH, config.HEIGHT), pg.SRCALPHA, 32)
         pg.display.set_caption(config.TITLE)
+        self.draw()
+
         self.running = True
 
         while self.running:
@@ -61,10 +63,9 @@ class Window:
     def mainloop(self, dt):
         self.handle_event()
 
-        self.update(dt)
-        self.draw()
-
-        pg.display.flip()
+        if self.playing:
+            self.update(dt)
+            self.draw()
 
     def handle_event(self):
         for event in pg.event.get():
@@ -85,11 +86,12 @@ class Window:
                 pass
 
     def update(self, dt):
-        pass
-        if self.playing and self.simulator is not None:
+        if self.simulator:
             self.simulator.update(dt)
 
     def draw(self):
-        self.screen.fill(config.BG_COLOR)
-        if self.simulator is not None:
+        # self.screen.fill(config.BG_COLOR)
+        if self.simulator:
             self.simulator.draw(self.screen)
+
+        pg.display.flip()

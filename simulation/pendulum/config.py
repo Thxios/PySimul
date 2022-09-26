@@ -16,11 +16,11 @@ class PendulumConfig(Config):
     M2 = 10
 
     # initial states (in degrees)
-    T1_0 = -90
+    T1_0 = -120
     T2_0 = -120
 
-    W1_0 = -90
-    W2_0 = -90
+    W1_0 = 0
+    W2_0 = 0
 
     # draw configs
     LINE_COLOR = Color.WHITE

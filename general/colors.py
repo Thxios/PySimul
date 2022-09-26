@@ -14,5 +14,5 @@ class Color:
     GRAY50 = (127, 127, 127)
     GRAY75 = (191, 191, 191)
 
-    ALPHA = (0, 0, 0, 0)
+    TRANSPARENT = (0, 0, 0, 0)
 
