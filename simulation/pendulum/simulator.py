@@ -8,6 +8,8 @@ from .config import PendulumConfig
 
 
 class PendulumSimulator(Simulator):
+    config = PendulumConfig
+
     def __init__(self):
         self.G = PendulumConfig.G
         self.L1, self.L2 = PendulumConfig.L1, PendulumConfig.L2

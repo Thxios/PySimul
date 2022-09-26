@@ -4,6 +4,8 @@ from general.colors import Color
 
 
 class PendulumConfig(Config):
+    TITLE = 'Double Pendulum'
+
     # constants
     G = 9.81
 

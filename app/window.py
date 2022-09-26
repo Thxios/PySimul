@@ -6,6 +6,7 @@ from typing import Type, Union
 from general.config import Config
 from general.simulator import Simulator
 
+config: Type[Config] = Config
 
 class Window:
     def __init__(self, simulator: Simulator = None):
@@ -14,9 +15,9 @@ class Window:
         # noinspection PyTypeChecker
         self.screen: pg.Surface = None
 
-        # self.config: Type[Config] = Config
-        # if simulator and simulator.config:
-        #     self.config = simulator.config
+        if simulator and simulator.config:
+            global config
+            config = simulator.config
 
         self.running = False
         self.playing = False
@@ -25,12 +26,12 @@ class Window:
     def run(self):
         prev_time = time.time()
         sum_ftime = 0
-        dt = 1 / Config.FPS
+        dt = 1 / config.FPS
         clock = pg.time.Clock()
         cnt = 0
 
-        self.screen = pg.display.set_mode((Config.WIDTH, Config.HEIGHT), pg.SRCALPHA, 32)
-        pg.display.set_caption(Config.TITLE)
+        self.screen = pg.display.set_mode((config.WIDTH, config.HEIGHT), pg.SRCALPHA, 32)
+        pg.display.set_caption(config.TITLE)
         self.running = True
 
         while self.running:
@@ -42,17 +43,17 @@ class Window:
             end_time = time.time()
             sum_ftime += end_time - start_time
 
-            if cnt % Config.FPS == 0:
-                mean_ftime = sum_ftime / Config.FPS
+            if cnt % config.FPS == 0:
+                mean_ftime = sum_ftime / config.FPS
                 if sum_ftime == 0:
                     fps = 100000
                 else:
                     fps = 1 / mean_ftime
                 pg.display.set_caption(
-                    f'{Config.TITLE} - fps: {fps:.0f} ftime: {1000*mean_ftime:.3f}ms')
+                    f'{config.TITLE} - fps: {fps:.0f} ftime: {1000*mean_ftime:.3f}ms')
                 sum_ftime = 0
 
-            clock.tick(Config.FPS)
+            clock.tick(config.FPS)
             dt = end_time - prev_time
             prev_time = end_time
 
@@ -89,6 +90,6 @@ class Window:
             self.simulator.update(dt)
 
     def draw(self):
-        self.screen.fill(Config.BG_COLOR)
+        self.screen.fill(config.BG_COLOR)
         if self.simulator is not None:
             self.simulator.draw(self.screen)
