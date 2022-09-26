@@ -31,6 +31,6 @@ linux
 ### Double Pendulum
 - commandline argument: `pendulum`
 
-### Elastic Collisions
+### Elastic Collision
 - commandline argument: `elastics`
 
