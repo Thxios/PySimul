@@ -1,6 +1,6 @@
 
 from general.config import Config
-from general import Color
+from general.colors import Color
 
 
 class PendulumConfig(Config):
@@ -17,8 +17,8 @@ class PendulumConfig(Config):
     T1_0 = -90
     T2_0 = -120
 
-    W1_0 = 0
-    W2_0 = 0
+    W1_0 = -90
+    W2_0 = -90
 
     # draw configs
     LINE_COLOR = Color.WHITE

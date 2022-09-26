@@ -2,7 +2,7 @@
 import pygame as pg
 from math import sin, cos, radians
 
-from general import Simulator
+from general.simulator import Simulator
 
 from .config import PendulumConfig
 
