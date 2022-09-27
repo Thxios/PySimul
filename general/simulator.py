@@ -1,9 +1,10 @@
 
 import pygame as pg
-
+from typing import Type
+from .config import Config
 
 class Simulator:
-    config = None
+    config: Type[Config] = None
 
     def update(self, dt: float):
         raise NotImplementedError()

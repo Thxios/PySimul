@@ -34,4 +34,6 @@ class PendulumConfig(Config):
     ORIGIN_Y = Config.HEIGHT - 100 - int(SCALE * (L1 + L2))
     ORIGIN = (ORIGIN_X, ORIGIN_Y)
 
+    SHOW_PATH_N = 1200
+    PATH_COLOR = Color.RED
 
