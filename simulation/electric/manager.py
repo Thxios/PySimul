@@ -89,16 +89,7 @@ class ForceField:
 
         self.vectors = np.zeros((self.n_row, self.n_col, 2))
 
-    def apply_force_dot(self, r, c, charge: Charge):
-        force, _ = electric_force(self.dot_pos[r][c], 1, charge.p, charge.q)
-        self.vectors[r][c] += force
-
-    def apply_force(self, charge: Charge):
-        for r in range(self.n_row):
-            for c in range(self.n_col):
-                self.apply_force_dot(r, c, charge)
-
-    def apply_force_all(self, charges: List[Charge]):
+    def apply_force(self, charges: List[Charge]):
         n = len(charges)
 
         q_arr = np.zeros((n,))
@@ -131,7 +122,7 @@ class ForceManager:
         self.objs = objects
         self.field = vector_field
 
-        # self.update(1 / ElectricConfig.FPS)
+        self.update(0)
 
     def update(self, dt: float):
         for i in range(len(self.objs)):
@@ -146,19 +137,11 @@ class ForceManager:
                     apply_collision(charge_a, charge_b)
 
         drag_ratio = np.exp(np.log(ElectricConfig.DRAG_PER_SEC) * dt)
-        # print(drag_ratio)
         for obj in self.objs:
             obj.apply_drag(drag_ratio)
             obj.apply_step(dt)
 
-        # print(drag_ratio, self.objs[0].p)
-
         if self.field:
-            self.field.apply_force_all(self.objs)
-            # self.field.zero_vectors()
-            # for obj in self.objs:
-            #     self.field.apply_force(obj)
-
-        # print(self.objs[0].p)
+            self.field.apply_force(self.objs)
 
 
