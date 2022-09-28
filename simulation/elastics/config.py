@@ -18,8 +18,9 @@ class ElasticsConfig(Config):
         RigidCircle(20, vector(100, 200), vector(200, -50)),
         RigidCircle(30, vector(600, 400), vector(-10, -250)),
         RigidCircle(15, vector(120, 450), vector(210, -200)),
-        RigidCircle(20, vector(40, 100), vector(300, 30)),
-        RigidCircle(50, vector(400, 400), vector(-100, 150)),
+        RigidCircle(20, vector(40, 100), vector(300, 300)),
+        RigidCircle(50, vector(400, 400), vector(-500, 750)),
+        RigidCircle(90, vector(600, 200), vector(-200, 800)),
     ]
 
     # draw configs

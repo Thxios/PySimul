@@ -9,6 +9,11 @@ from general.colors import Color
 from .config import PendulumConfig
 
 
+def coord2scr(x, y):
+    return (round(PendulumConfig.ORIGIN_X + x * PendulumConfig.SCALE),
+            round(PendulumConfig.ORIGIN_Y + y * PendulumConfig.SCALE))
+
+
 class PendulumSimulator(Simulator):
     config = PendulumConfig
 
@@ -72,8 +77,8 @@ class PendulumSimulator(Simulator):
     def draw(self, screen):
         screen.fill(self.config.BG_COLOR)
 
-        scr_pos1 = self.coord2scr(self.x1, self.y1)
-        scr_pos2 = self.coord2scr(self.x2, self.y2)
+        scr_pos1 = coord2scr(self.x1, self.y1)
+        scr_pos2 = coord2scr(self.x2, self.y2)
 
         if self.config.SHOW_PATH_N > 0:
             px, py = scr_pos2
@@ -106,7 +111,3 @@ class PendulumSimulator(Simulator):
                        self.config.PENDULUM_COLOR,
                        scr_pos2,
                        self.config.R2)
-
-    def coord2scr(self, x, y):
-        return (round(self.config.ORIGIN_X + x * self.config.SCALE),
-                round(self.config.ORIGIN_Y + y * self.config.SCALE))

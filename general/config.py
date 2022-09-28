@@ -1,7 +1,7 @@
 
 class Config:
-    WIDTH = 800
-    HEIGHT = 600
+    WIDTH = 960
+    HEIGHT = 720
     FPS = 60
     TITLE = 'Test'
 
