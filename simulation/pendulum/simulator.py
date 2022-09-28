@@ -44,7 +44,7 @@ class PendulumSimulator(Simulator):
             [0 for _ in range(self.config.HEIGHT)]
             for _ in range(self.config.WIDTH)]
 
-    def update(self, dt):
+    def update_single(self, dt):
         a1_n1 = -self.G * (2 * self.M1 + self.M2) * sin(self.t1)
         a1_n2 = -self.M2 * self.G * sin(self.t1 - 2 * self.t2)
         a1_n3 = -2 * sin(self.t1 - self.t2) * self.M2
@@ -74,10 +74,9 @@ class PendulumSimulator(Simulator):
         self.x2 = self.x1 + self.L2 * sin(self.t2)
         self.y2 = self.y1 + self.L2 * cos(self.t2)
 
-    def draw(self, screen):
-        screen.fill(self.config.BG_COLOR)
+        self.update_path()
 
-        scr_pos1 = coord2scr(self.x1, self.y1)
+    def update_path(self):
         scr_pos2 = coord2scr(self.x2, self.y2)
 
         if self.config.SHOW_PATH_N > 0:
@@ -92,6 +91,18 @@ class PendulumSimulator(Simulator):
                 if self.path_matrix[lx][ly] == 0:
                     self.path_surf.set_at((lx, ly), Color.TRANSPARENT)
 
+    def update(self, dt: float):
+        dt_single = dt / PendulumConfig.UPDATE_PER_FRAME
+        for _ in range(PendulumConfig.UPDATE_PER_FRAME):
+            self.update_single(dt_single)
+
+    def draw(self, screen):
+        screen.fill(self.config.BG_COLOR)
+
+        scr_pos1 = coord2scr(self.x1, self.y1)
+        scr_pos2 = coord2scr(self.x2, self.y2)
+
+        if self.config.SHOW_PATH_N > 0:
             screen.blit(self.path_surf, (0, 0))
 
         pg.draw.aaline(screen,
