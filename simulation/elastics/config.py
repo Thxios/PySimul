@@ -6,12 +6,11 @@ from .collision import RigidCircle
 
 class ElasticsConfig(Config):
     TITLE = 'Elastic Collision'
+    UPDATE_PER_FRAME = 3
 
     FIELD_OFFSET = 50
     FIELD_WIDTH = Config.WIDTH - 2*FIELD_OFFSET
     FIELD_HEIGHT = Config.HEIGHT - 2*FIELD_OFFSET
-
-    N_STEP = 1
 
     # objects
     OBJECTS = [
@@ -20,7 +19,7 @@ class ElasticsConfig(Config):
         RigidCircle(15, vector(120, 450), vector(210, -200)),
         RigidCircle(20, vector(40, 100), vector(300, 300)),
         RigidCircle(50, vector(400, 400), vector(-500, 750)),
-        RigidCircle(90, vector(600, 200), vector(-200, 800)),
+        RigidCircle(90, vector(600, 200), vector(-200, 300)),
     ]
 
     # draw configs

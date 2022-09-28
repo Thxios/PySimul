@@ -24,8 +24,9 @@ class ElasticsSimulator(Simulator):
         self.field_surface.fill(Color.TRANSPARENT)
 
     def update(self, dt: float):
-        for _ in range(ElasticsConfig.N_STEP):
-            self.manager.update(dt / ElasticsConfig.N_STEP)
+        dt_single = dt / ElasticsConfig.UPDATE_PER_FRAME
+        for _ in range(ElasticsConfig.UPDATE_PER_FRAME):
+            self.manager.update(dt_single)
 
     def draw(self, screen: pg.Surface):
         screen.fill(ElasticsConfig.BG_COLOR)
