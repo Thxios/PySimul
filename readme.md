@@ -34,3 +34,6 @@ linux
 ### Elastic Collision
 - commandline argument: `elastics`
 
+### Electric Force Field
+- commandline argument: `electric`
+
