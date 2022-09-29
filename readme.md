@@ -1,4 +1,5 @@
-# Simulations using Pygame
+# PySimul
+Simulations using pygame
 
 ## How to Run
 ### Setup
@@ -29,11 +30,14 @@ linux
 - to change the simulation settings, see `general/config.py` and `simulation/[Simulation Type]/config.py`
 
 ### Double Pendulum
+![](demo/pendulum.gif)
 - commandline argument: `pendulum`
 
 ### Elastic Collision
+![](demo/elastics.gif)
 - commandline argument: `elastics`
 
 ### Electric Force Field
+![](demo/electric.gif)
 - commandline argument: `electric`
 
