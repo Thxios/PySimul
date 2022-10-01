@@ -37,7 +37,7 @@ linux
 ![](demo/elastics.gif)
 - commandline argument: `elastics`
 
-### Electric Force Field
+### Electric Field
 ![](demo/electric.gif)
 - commandline argument: `electric`
 
